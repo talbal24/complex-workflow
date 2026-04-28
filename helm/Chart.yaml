@@ -1,0 +1,4 @@
+apiVersion: v2
+name: acme-financial-app
+description: ACME Financial Services Demo App
+version: 0.1.0
