@@ -10,7 +10,7 @@ variable "cluster_name" {
 
 variable "cluster_version" {
   type    = string
-  default = "1.29"
+  default = "1.31"
 }
 
 variable "vpc_id" {
@@ -23,24 +23,4 @@ variable "public_subnet_id" {
 
 variable "public_subnet_id_2" {
   type = string
-}
-
-variable "instance_types" {
-  type    = list(string)
-  default = ["t3.medium"]
-}
-
-variable "cluster_min_size" {
-  type    = number
-  default = 1
-}
-
-variable "cluster_max_size" {
-  type    = number
-  default = 2
-}
-
-variable "cluster_desired_size" {
-  type    = number
-  default = 1
 }
