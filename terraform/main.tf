@@ -4,10 +4,6 @@ provider "aws" {
 
 resource "aws_instance" "acme_app" {
   ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
-  tags = { Name = "acme-financial-app" }
-}
-
-output "instance_ip" {
-  value = aws_instance.acme_app.public_ip
+  instance_type = var.instance_type
+  tags = { Name = var.environment_name }
 }
