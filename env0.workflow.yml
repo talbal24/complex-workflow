@@ -1,19 +1,26 @@
 environments:
-  provision-infra:
-    name: "1. Provision Infrastructure (Terraform)"
-    templateName: "acme-tf-infra"
+  provision-vpc:
+    name: "1. Provision Network (Terraform)"
+    templateName: "demo-vpc"
     requiresApproval: false
 
-  configure-servers:
-    name: "2. Configure Servers (Ansible)"
+  provision-eks:
+    name: "2. Provision EKS Cluster (Terraform)"
+    templateName: "acme-tf-eks"
+    requiresApproval: false
+    needs:
+      - provision-vpc
+
+  configure-cluster:
+    name: "3. Configure Cluster (Ansible)"
     templateName: "acme-ansible-config"
     requiresApproval: false
     needs:
-      - provision-infra
+      - provision-eks
 
   deploy-app:
-    name: "3. Deploy Application (Helm)"
+    name: "4. Deploy Application (Helm)"
     templateName: "acme-helm-app"
     requiresApproval: true
     needs:
-      - configure-servers
+      - configure-cluster
