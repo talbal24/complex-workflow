@@ -6,7 +6,7 @@ environments:
 
   provision-eks:
     name: "2. Provision EKS Cluster (Terraform)"
-    templateName: "acme-tf-eks"
+    templateName: "complex-demo-eks"
     requiresApproval: false
     needs:
       - provision-vpc
