@@ -1,0 +1,19 @@
+environments:
+  provision-infra:
+    name: "1. Provision Infrastructure (Terraform)"
+    templateName: "acme-tf-infra"
+    requiresApproval: false
+
+  configure-servers:
+    name: "2. Configure Servers (Ansible)"
+    templateName: "acme-ansible-config"
+    requiresApproval: false
+    needs:
+      - provision-infra
+
+  deploy-app:
+    name: "3. Deploy Application (Helm)"
+    templateName: "acme-helm-app"
+    requiresApproval: true
+    needs:
+      - configure-servers
